@@ -95,13 +95,11 @@ mean.per.int.we<-tapply(weekend$steps,weekend$interval,mean)
 
 ### Average number of steps per interval by weekdays and weekends
 
-```{r}
 
 
+```{r fig.width=5,fig.height=3.5,cache=TRUE}
 layout(1:2)
 par(oma=c(5,4,0,0),mar = c(0,4,0,0) + 0.1)
-```
-```{r fig.width=5,fig.height=3.5,cache=TRUE}
 plot(as.numeric(names(mean.per.int.wd)),mean.per.int.wd,type='l',xlab='',ylab='N by weekdays',main='',xaxt='n')
 plot(as.numeric(names(mean.per.int.we)),mean.per.int.we,type='l',xlab='',ylab='N by weekends')
 title(xlab = "Interval", outer = TRUE, line = 3)
