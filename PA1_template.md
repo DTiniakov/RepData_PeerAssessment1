@@ -1,8 +1,9 @@
 ---
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
+title: "Reproducible research 1"
+author: "Daniil Tiniakov"
+output:
+  md_document:
+    variant: markdown_github
 ---
 ## Reading and processing data
 ```{r}
@@ -15,10 +16,7 @@ amd$date<-as.Date(amd$date)
 ## Total number of steps taken each day
 ```{r}
 daily.total<-tapply(amd$steps,amd$date,sum)
-```
-```{r fig.width=5,fig.height=3.5,cache=TRUE}
 hist(daily.total,breaks=15,main='',xlab='Total number of steps per day')
-
 ```
 
 ### Mean and median number of steps taken each day
@@ -30,9 +28,6 @@ median(daily.total,na.rm=TRUE)
 ```{r}
 amd2<-na.omit(amd)
 mean.per.int<-tapply(amd2$steps,amd2$interval,mean)
-```
-
-``` {r fig.width=5,fig.height=3.5,cache=TRUE}
 plot(as.numeric(names(mean.per.int)),mean.per.int,type='l',xlab='Interval',ylab='Number of steps')
 ```
 
@@ -63,11 +58,7 @@ So, all the NAs are imputed with mean per interval values, non-missing values re
 
 ```{r}
 daily.total.imp<-tapply(amd$steps,amd$date,sum)
-```
-```{r fig.width=5,fig.height=3.5,cache=TRUE}
 hist(daily.total.imp,breaks=15,main='',xlab='Total number of steps per day')
-```
-```{r}
 mean(daily.total.imp)
 median(daily.total.imp)
 ```
@@ -100,8 +91,6 @@ mean.per.int.we<-tapply(weekend$steps,weekend$interval,mean)
 
 layout(1:2)
 par(oma=c(5,4,0,0),mar = c(0,4,0,0) + 0.1)
-```
-```{r fig.width=5,fig.height=3.5,cache=TRUE}
 plot(as.numeric(names(mean.per.int.wd)),mean.per.int.wd,type='l',xlab='',ylab='N by weekdays',main='',xaxt='n')
 plot(as.numeric(names(mean.per.int.we)),mean.per.int.we,type='l',xlab='',ylab='N by weekends')
 title(xlab = "Interval", outer = TRUE, line = 3)
