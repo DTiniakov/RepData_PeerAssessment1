@@ -178,17 +178,9 @@ mean.per.int.we<-tapply(weekend$steps,weekend$interval,mean)
 ```r
 layout(1:2)
 par(oma=c(5,4,0,0),mar = c(0,4,0,0) + 0.1)
-```
-
-```r
 plot(as.numeric(names(mean.per.int.wd)),mean.per.int.wd,type='l',xlab='',ylab='N by weekdays',main='',xaxt='n')
-```
-
-![](repres1_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
-
-```r
 plot(as.numeric(names(mean.per.int.we)),mean.per.int.we,type='l',xlab='',ylab='N by weekends')
 title(xlab = "Interval", outer = TRUE, line = 3)
 ```
-
+![](repres1_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 ![](repres1_files/figure-html/unnamed-chunk-14-2.png)<!-- -->
